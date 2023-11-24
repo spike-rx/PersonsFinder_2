@@ -70,7 +70,9 @@ class LocationsServiceImpl(
         val circle = Circle(location?.longitude!!, location.latitude, radiusInKm)
         // sort by distance
         val geoResults = redisTemplate.opsForGeo().radius(userLocationKey, circle, RedisGeoCommands.GeoRadiusCommandArgs.newGeoRadiusArgs().sortAscending())
-        val nearbyUser = geoResults!!.map { it.content.name }
+        // map referenceId and exclude self
+        val nearbyUser = geoResults!!.map { it.content.name }.filter { it.toString().toLong() !== referenceId }
+
         redisTemplate.opsForList().rightPushAll(cacheKey + referenceId, nearbyUser, expirationTimeInSeconds, TimeUnit.SECONDS);
 
         return nearbyUser
