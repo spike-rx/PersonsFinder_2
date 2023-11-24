@@ -18,7 +18,7 @@ Even with billions data, only first query will query the database, after first q
 
 should also do data persistence in case redis restart
 
-advantage: goo performance, fast response 
+advantage: good performance, fast response 
 
 ![a608b0fb443ae08822f5c85bddc636a7.png](https://i.mji.rip/2023/11/21/a608b0fb443ae08822f5c85bddc636a7.png)
 
