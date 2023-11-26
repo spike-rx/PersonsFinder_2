@@ -9,11 +9,13 @@ import org.springframework.data.redis.connection.RedisGeoCommands
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
+const val size = 1000
 
 /**
  * Asynchronously store big data for testing
  */
-const val size = 1000
 @Service
 class SaveDataServiceImpl(
     private val personRepository: PersonRepository,
@@ -21,6 +23,7 @@ class SaveDataServiceImpl(
     private val redisTemplate: RedisTemplate<String, Any>
 ) : SaveDataService {
     @Async
+    @Transactional
     override fun saveMillionData() {
 
         val locationList: MutableList<Location> = mutableListOf()
@@ -42,6 +45,7 @@ class SaveDataServiceImpl(
     }
 
     @Async
+    @Transactional
     override fun saveTenMillionData() {
 
         val personList: MutableList<Person> = mutableListOf()
@@ -53,6 +57,7 @@ class SaveDataServiceImpl(
     }
 
     @Async
+    @Transactional
     override fun saveHundredMillionData() {
         val personList: MutableList<Person> = mutableListOf()
         for (i in 1..100000000) {
