@@ -11,14 +11,18 @@ disadvantage: poor performance
 
 # Solution 2
 # Introduction
-Using redis for caching and saving location 
-Geo can helps calculate and sort user nearby.
+Using Redis for caching and saving location
+Geo can help calculate and sort users nearby.
 
-Even with billions data, only first query will query the database, after first query save cache into redis will response ASAP
+Even with billions of data, only the first query will query the database, after the first query saves the cache Redis will respond ASAP
+Should also do data persistence in case of redis restart
 
-should also do data persistence in case redis restart
+Depending on the system QPS may need a redis-cluster in the future
 
-advantage: good performance, fast response 
+
+
+advantage: good performance, fast response
+disadvantage: extra cost, extra learning cost
 
 ![a608b0fb443ae08822f5c85bddc636a7.png](https://i.mji.rip/2023/11/21/a608b0fb443ae08822f5c85bddc636a7.png)
 
