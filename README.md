@@ -12,9 +12,9 @@ disadvantage: poor performance
 # Solution 2
 # Introduction
 Using Redis for caching and saving location
-Geo can help calculate and sort users nearby.
+Redis Geospatial is a module for processing geospatial data
 
-Even with billions of data, only the first query will query the database, after the first query saves the cache Redis will respond ASAP
+Even with billions of data, only the first time query will query the database, after the first time query saves the cache Redis will respond ASAP
 Should also do data persistence in case of redis restart
 
 Depending on the system QPS may need a redis-cluster in the future
